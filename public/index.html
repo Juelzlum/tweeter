@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="./styles/nav.css" type="text/css">
     <link rel="stylesheet" href="./styles/header.css" type="text/css">
     <link rel="stylesheet" href="./styles/new-tweet.css" type="text/css">
+    <link rel="stylesheet" href="./styles/tweet-container.css" type="text/css">
   
 
     <!-- External JS -->
@@ -38,7 +39,7 @@
          </div>
     </nav>
 
-    <header>
+    <header class = "top-header">
       <div>
           <img src="/images/profile-hex.png"> 
       </div>
@@ -61,6 +62,24 @@
           </div>
         </form>
       </section>
+
+      <section id="tweets-container" class = tweets-history>
+        <article>
+          <header class="bottom-header">
+            <p class = "tweet">
+          hello my name is julian
+          </p>
+        </header>
+      <footer>
+        <th>this is my tweet</th>
+        <span id = icons>       
+          <i id="flag" class="fa-solid fa-flag"></i>
+          <i id ="retweet" class="fa-solid fa-retweet"></i>
+          <i id="heart" class="fa-solid fa-heart"></i>
+        </span>
+      </footer>
+      </article>
+      </section> 
     </main>
    
   </body>

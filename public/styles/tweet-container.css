@@ -1,0 +1,29 @@
+.tweet-container{
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: stetch;
+}
+.tweet{
+  width: 80px;
+  border: 5px solid beige;
+  margin: 1em;
+}
+#icon{
+  display: flex;
+  justify-content: space-between;
+
+}
+
+#flag:hover{
+  color: gold;
+}
+
+#heart:hover{
+  color: gold;
+}
+
+#retweet:hover{
+  color: gold;
+}
+
