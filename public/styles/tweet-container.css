@@ -4,26 +4,50 @@
   justify-content: center;
   align-items: stetch;
 }
+.bordertweet{
+  margin-bottom: 1em;
+  padding: 0.5em;
+  border:solid
+
+}
 .tweet{
   width: 80px;
   border: 5px solid beige;
   margin: 1em;
 }
-#icon{
+.headertweet{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  height: 50px;
+  margin-top: 5px;
+}
+.headeruserphoto{
+  margin-left: 20px
+}
+.headerusername{
+  width: 100%;
+  margin: 20px;
+  margin-left: 20px;
+  display: flex;
+  justify-content: flex-end;
+  color: #978686;
+  font-family: 'Bungee'
+  
+}
+.icons{
   display: flex;
   justify-content: space-between;
-
+  margin-left: auto;
 }
-
-#flag:hover{
+.bordertweet:hover{
+  box-shadow: 10px 5px 5px gray
+}
+.fa-solid:hover{
   color: gold;
 }
 
-#heart:hover{
-  color: gold;
+.errormsg{
+  color: pink;
+  align-items: center;
 }
-
-#retweet:hover{
-  color: gold;
-}
-

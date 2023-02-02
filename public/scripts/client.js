@@ -4,85 +4,101 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
+// const data = [
+//   {
+//     "user": {
+//       "name": "Newton",
+//       "avatars": "https://i.imgur.com/73hZDYK.png"
+//       ,
+//       "handle": "@SirIsaac"
+//     },
+//     "content": {
+//       "text": "If I have seen further it is by standing on the shoulders of giants"
+//     },
+//     "created_at": 1461116232227
+//   },
+//   {
+//     "user": {
+//       "name": "Descartes",
+//       "avatars": "https://i.imgur.com/nlhLi3I.png",
+//       "handle": "@rd" },
+//     "content": {
+//       "text": "Je pense , donc je suis"
+//     },
+//     "created_at": 1461113959088
+//   }
+// ]
+const renderTweets = function(tweets) {
+  for (let tweet of tweets) {
+    console.log(tweet)
+    const value = createTweetElement(tweet);
+    $('#tweets-container').prepend(value);
   }
-]
-const renderTweets =  function(tweets) {
-for(let tweet in tweets) {
-  const value = createTweetElement(tweets[tweet])
-  $('.tweets-container').append(value)
-}
-}
+};
+const escape = function(str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
 
-const createTweetElement = function(obj) {
-  const $tweet = `<article class= "bordertweet>
+
+const createTweetElement = function(tweet) {
+  // console.log(tweet)
+  const safeHTML = escape(tweet.content.text);
+  const $tweet = `<article class= "bordertweet">
   <header class = "headertweet">
-  <img class = "headeruserphoto" src = ${tweet.user.avatars}></img>
+  <img class = "headeruserphoto" src = ${tweet.user.avatars} />
   <span class = "headerName">${tweet.user.name}</span>
   <span class = "headerusername"> ${tweet.user.handle}></span>
   </header>
-  <p class = "tweetsentence"> ${tweet.content.text}</p>
+  <p class = "tweetsentence"> ${safeHTML}</p>
   <span> </span>
   <footer class = "foottweet">
-  <a> ${timeago.format(tweet.created_at)}</a>
-  <div class = "icons">     
-    <button id= "btn" > <i id="flag" class="fa-solid fa-flag"></i></button>
-    <button id= "btn"> <i id ="retweet" class="fa-solid fa-retweet"></i><button>
-    <button> id= "btn"<i id="heart" class="fa-solid fa-heart"></i></button>
+  <div class = "icons">  
+    <div>   
+     <a> ${timeago.format(tweet.created_at)}</a>
+    </div>
+    <div>
+        <i id="flag" class="fa-solid fa-flag"></i>
+        <i id ="retweet" class="fa-solid fa-retweet"></i>
+       <i id="heart" class="fa-solid fa-heart"></i>
+    </div>
   </div>
   </footer>
-  </article>
-  return $tweet`
-}
+  </article>`;
+  return $tweet;
+};
 
 const loadTweets = function() {
   $.ajax({
-    url: "/tweets", 
-    method: 'GET', 
-    dataType: 'json', 
-    success: (tweets)=> {
-      renderTweets(tweets)
+    url: "/tweets",
+    method: 'GET',
+    success: (tweets) => {
+      console.log(tweets)
+      renderTweets(tweets);
     }
 
-  })
-}
-loadTweets()
+  });
+};
+loadTweets();
 
-$document.ready(function(){
+$(document).ready(function() {
 
-const $submitTweet = $('#submitTweet')
-$submitTweet.on('submit', function (event){
-  event.preventDefault()
-  console.log( $( this ).serialize());
-  if($("#tweet-text").val().length > 140) {
-    alert(`Error! The tweet exceeded 140 characters!`)
-  }
-  else if($("#tweet-text").val().length === 0){
-    alert('The Tweet cannot be empty!')
-  }
-  
+  const $submitTweet = $('#submitTweet');
+  $submitTweet.on('submit', function(event) {
+    event.preventDefault();
+    // console.log( $( this ).serialize());
+    if ($("#tweet-text").val().length > 140) {
+      $('errormsg').html(`Error! The tweet exceeded 140 characters! Kthxbye! `);
+    }
+    else if ($("#tweet-text").val().length === 0) {
+      $('errormsg').html('The Tweet cannot be empty! Kthxbye!');
+    } else {
+      $.post('/tweets', $(this).serialize()).then(function() {
+        $("#tweet-text").val(null);
+        loadTweets();
+      });
+    }
+  });
 })
-})
-// const $tweet = createTweetElement(Data)
-// console.log($tweet)
+
