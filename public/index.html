@@ -24,6 +24,8 @@
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src = "scripts/composer-char-counter.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js" integrity="sha512-SVDh1zH5N9ChofSlNAK43lcNS7lWze6DTVx1JCXH1Tmno+0/1jMpdbR8YDgDUfcUrPp1xyE53G42GFrcM0CMVg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
@@ -53,7 +55,7 @@
       
       <section class="new-tweet">
         <h2>Compose Tweet</h2>
-        <form method = "POST" action = /tweets>
+        <form method = "POST" action = /tweets id="submitTweet">
           <label for="tweet-text">What are you humming about?</label>
           <textarea name="text" id="tweet-text"></textarea>
           <div>
@@ -63,23 +65,7 @@
         </form>
       </section>
 
-      <section id="tweets-container" class = tweets-history>
-        <article>
-          <header class="bottom-header">
-            <p class = "tweet">
-          hello my name is julian
-          </p>
-        </header>
-      <footer>
-        <th>this is my tweet</th>
-        <span id = icons>       
-          <i id="flag" class="fa-solid fa-flag"></i>
-          <i id ="retweet" class="fa-solid fa-retweet"></i>
-          <i id="heart" class="fa-solid fa-heart"></i>
-        </span>
-      </footer>
-      </article>
-      </section> 
+      <section id="tweets-container" class = tweets-history></section> 
     </main>
    
   </body>
