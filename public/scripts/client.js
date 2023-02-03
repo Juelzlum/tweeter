@@ -30,7 +30,6 @@
 // ]
 const renderTweets = function(tweets) {
   for (let tweet of tweets) {
-    console.log(tweet)
     const value = createTweetElement(tweet);
     $('#tweets-container').prepend(value);
   }
@@ -43,7 +42,8 @@ const escape = function(str) {
 
 
 const createTweetElement = function(tweet) {
-  // console.log(tweet)
+  const date1 = new Date()
+  const time = timeago.format(tweet.created_at)
   const safeHTML = escape(tweet.content.text);
   const $tweet = `<article class= "bordertweet">
   <header class = "headertweet">
@@ -56,7 +56,7 @@ const createTweetElement = function(tweet) {
   <footer class = "foottweet">
   <div class = "icons">  
     <div>   
-     <a> ${timeago.format(tweet.created_at)}</a>
+     <a> ${time}</a>
     </div>
     <div>
         <i id="flag" class="fa-solid fa-flag"></i>

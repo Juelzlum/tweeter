@@ -9,7 +9,8 @@ padding: 1.5em;
 position:fixed;
 font-family: 'Bungee', sans-serif;
 align-items: center;
-width: 100%
+width: 100%;
+font-size: 100%
 } 
 
 span{
@@ -64,6 +65,9 @@ align-items: flex-end;
 }
 
 @media (max-width:768px) {
+  nav{
+    font-size: 20px
+  }
   #logo{
     margin: 0.25em
   }
