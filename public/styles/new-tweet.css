@@ -3,6 +3,8 @@
   align-items: center;
   justify-content: flex-start;
   background-color: transparent;
+  margin-bottom: 1em;
+  margin-top: 1em;
   
 }
 form{
@@ -35,4 +37,27 @@ button{
   align-items: flex-end;
   font-family: 'Bungee', sans-serif;
   color: whitesmoke;
+  }
+
+  @media(min-width: 1024px){
+    form{
+      display: flex; 
+      flex-direction: column;
+      background-color: white;
+      width:95%;
+
+    }
+  }
+  @media (max-width:768px) {
+    #tweet-text{
+      border-style: hidden;
+      border-bottom: 4px solid;
+      background-color: white;
+      border: none; 
+      border-bottom-style:solid;
+      border-bottom-color: black;
+    }
+    form{
+      width:90%
+    }
   }

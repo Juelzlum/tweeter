@@ -48,6 +48,28 @@
 }
 
 .errormsg{
-  color: pink;
+  color: rgb(255, 42, 42);
   align-items: center;
+  font-size: 50px;
+}
+
+@media(min-width:1024px){
+  .tweet-container{
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: stetch;
+}
+}
+@media(min-width:768px){
+  .tweet-container{
+  display: flex; 
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.icons{
+  margin: 1em;
+  width: auto;
+}
 }

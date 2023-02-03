@@ -6,10 +6,52 @@
   align-items: center; 
   justify-content: center;
   flex-direction: column;
-  background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png")
+  background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
+  border-radius: 3px;
 }
 
 .name{
   display: flex;
   justify-content: center;
 }
+
+@media (min-width:1024px) {
+  .top-header{
+    display: flex;
+    width: 100%;
+    height: 400px;
+    align-content: space-around;
+    margin-top: 100px;
+    align-items: center; 
+    justify-content: center;
+    flex-direction: column;
+    background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
+    border-radius: 3rem;
+  }
+  .name h2{
+    display:flex; 
+    justify-content: center;
+    font-size: 3rem
+  }
+}
+@media(max-width: 768px){
+  .top-header{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-content: space-around;
+    margin-top: 100px;
+    align-items: center; 
+    justify-content: center;
+    flex-direction: column;
+    background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
+    border-radius: 3rem;
+    padding-top: 10vw;
+  }
+    .name h2{
+      display:flex; 
+      justify-content: center;
+      font-size: 2rem;
+      margin-top:1rem
+    }
+  }

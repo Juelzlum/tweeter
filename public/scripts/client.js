@@ -89,10 +89,10 @@ $(document).ready(function() {
     event.preventDefault();
     // console.log( $( this ).serialize());
     if ($("#tweet-text").val().length > 140) {
-      $('errormsg').html(`Error! The tweet exceeded 140 characters! Kthxbye! `);
+      $('.errormsg').html(`Error! The tweet exceeded 140 characters! Kthxbye! `);
     }
     else if ($("#tweet-text").val().length === 0) {
-      $('errormsg').html('The Tweet cannot be empty! Kthxbye!');
+      $('.errormsg').html('The Tweet cannot be empty! Kthxbye!');
     } else {
       $.post('/tweets', $(this).serialize()).then(function() {
         $("#tweet-text").val(null);

@@ -42,5 +42,44 @@ margin: 1.5em;
 
 .logo2{
 color: orange; 
-padding: 0; 
+padding: 0;
+display: flex;
+align-items: flex-end; 
 }
+
+@media(min-width: 1024px){
+  nav {
+    display: flex; 
+    height: 120px;
+    background-color: #4056A1;
+    color: #FFFFFF;
+    justify-content: space-between;
+    top: 0;
+    padding: 1.5em; 
+    position:fixed;
+    font-family: 'Bungee', sans-serif;
+    align-items: center;
+    width: 100%
+    } 
+}
+
+@media (max-width:768px) {
+  #logo{
+    margin: 0.25em
+  }
+  nav-span{
+    font-size:20px
+  }
+  .right-side-nav p{
+    margin: 0.25em
+    }
+  .logo2{
+      color: orange; 
+      padding: 0;
+      display: flex;
+      align-items: flex-end; 
+      justify-content: space-around;
+      flex-wrap: wrap ;
+  }
+}
+
