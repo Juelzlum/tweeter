@@ -4,45 +4,22 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-// const data = [
-//   {
-//     "user": {
-//       "name": "Newton",
-//       "avatars": "https://i.imgur.com/73hZDYK.png"
-//       ,
-//       "handle": "@SirIsaac"
-//     },
-//     "content": {
-//       "text": "If I have seen further it is by standing on the shoulders of giants"
-//     },
-//     "created_at": 1461116232227
-//   },
-//   {
-//     "user": {
-//       "name": "Descartes",
-//       "avatars": "https://i.imgur.com/nlhLi3I.png",
-//       "handle": "@rd" },
-//     "content": {
-//       "text": "Je pense , donc je suis"
-//     },
-//     "created_at": 1461113959088
-//   }
-// ]
+/*-- looping throught the tweets --*/
 const renderTweets = function(tweets) {
   for (let tweet of tweets) {
     const value = createTweetElement(tweet);
     $('#tweets-container').prepend(value);
   }
 };
+
 const escape = function(str) {
   let div = document.createElement("div");
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
 };
 
-
+/*--building tweets dynamically-- */
 const createTweetElement = function(tweet) {
-  const date1 = new Date()
   const time = timeago.format(tweet.created_at)
   const safeHTML = escape(tweet.content.text);
   const $tweet = `<article class= "bordertweet">
@@ -68,7 +45,7 @@ const createTweetElement = function(tweet) {
   </article>`;
   return $tweet;
 };
-
+/* --using Ajax to fetch the tweet from /tweet server --*/
 const loadTweets = function() {
   $.ajax({
     url: "/tweets",
@@ -81,19 +58,18 @@ const loadTweets = function() {
   });
 };
 loadTweets();
-
+/*-- handling the submit component and with error messages --*/
 $(document).ready(function() {
-
   const $submitTweet = $('#submitTweet');
   $submitTweet.on('submit', function(event) {
     event.preventDefault();
-    // console.log( $( this ).serialize());
     if ($("#tweet-text").val().length > 140) {
       $('.errormsg').html(`Error! The tweet exceeded 140 characters! Kthxbye! `);
     }
     else if ($("#tweet-text").val().length === 0) {
       $('.errormsg').html('The Tweet cannot be empty! Kthxbye!');
     } else {
+      $('.errormsg').remove()
       $.post('/tweets', $(this).serialize()).then(function() {
         $("#tweet-text").val(null);
         loadTweets();
